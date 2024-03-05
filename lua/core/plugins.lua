@@ -13,15 +13,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --   }
+  -- },
+  'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
   'nvim-treesitter/nvim-treesitter',
   {
@@ -38,13 +39,13 @@ local plugins = {
   "L3MON4D3/LuaSnip",
   "saadparwaiz1/cmp_luasnip",
   'rafamadriz/friendly-snippets',
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
 
   -- quick fix actions
   "kevinhwang91/nvim-bqf",
   -- ui
   { 'akinsho/bufferline.nvim',    version = "*",     dependencies = 'nvim-tree/nvim-web-devicons' },
-  --utils
+  -- utils
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -84,6 +85,19 @@ local plugins = {
   { "catppuccin/nvim",            as = "catppuccin" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false,                                priority = 1000 },
   "oxfist/night-owl.nvim",
+
+  --FLUTTER
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+    },
+    config = function ()
+      require("flutter-tools").setup {} 
+    end,
+  }
 
 }
 

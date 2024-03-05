@@ -11,7 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Normal --
--- Better window navigation
+keymap("n", "<C-Z>", "<C-R>", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -20,6 +20,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-K>", "i <CR>", opts)
 
 -- Insert --
 keymap("i", "jk", "<ESC>", opts)
@@ -44,6 +45,9 @@ keymap("n", "x", '"_x', opts)
 keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<cr>", opts) -- find files within current working directory, respects .gitignore
 keymap("n", "<leader>F", "<cmd>Telescope live_grep theme=ivy<cr>", opts)    -- find string in current working directory as you type
 
+--fluter
+keymap("n", "<leader>sf", "<cmd>Telescope flutter commands<cr>", opts) 
+
 -- git
 -- keymap("n", "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", opts)
 -- keymap("n", "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", opts)
@@ -65,15 +69,25 @@ keymap("n", "<leader>h", ":nohl<CR>", opts)
 keymap("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- nvim tree
--- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("n", "<S-C-E>", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("n", "<C-S-e>", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("n", "<C-e>", "<cmd>NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>r", "<cmd>NvimTreeFocus<cr>", opts)
--- keymap("n", "<leader>R", "<cmd>NvimTreeCollapse<cr>", opts)
--- keymap("n", "<leader>w", "<cmd>w!<CR>", opts)
---keymap("n", "<leader>c", "<cmd>Bdelete!<CR>", opts)
---keymap("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", opts)
+keymap("n", "<leader>w", "<cmd>NvimTreeCollapse<cr>", opts)
+-- keymap("n", "<>R", "<cmd>NvimTreeCollapse<cr>", opts)
+-- keymap("n", "<S-A-R>", "<cmd>NvimTreeCollapse<cr>", opts)
+keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
+keymap("i", "<C-s>", "<cmd>w!<CR>", opts)
+keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<C-_>", "<Plug>(comment_toggle_linewise_current)", opts)
+keymap("v", "<C-_>", "<Plug>(comment_toggle_linewise_visual)", opts)
+-- jebeno ne radi ovo gore
+-- keymap("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", opts)
+-- keymap("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", opts)
 
 -- nvim tree
-keymap("n", "<leader>e", "<cmd>Neotree float reveal<cr>", opts)
+-- keymap("n", "<leader>e", "<cmd>Neotree float reveal<cr>", opts)
 -- keymap("n", "<leader>r", "<cmd>NvimTreeFocus<cr>", opts)
 -- keymap("n", "<leader>R", "<cmd>NvimTreeCollapse<cr>", opts)
 -- keymap("n", "<leader>w", "<cmd>w!<CR>", opts)
@@ -97,12 +111,11 @@ keymap("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
 keymap("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>st", "<cmd>Telescope help_tags<cr>", opts)   -- list available help tags
-keymap("n", "<leader>sf", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
+-- keymap("n", "<leader>sf", "<cmd>Telescope grep_string<cr>", opts) -- find string under cursor in current working directory
 
 -- Files
-keymap("n", "<leader>w", "<cmd>w!<cr>", opts)
+-- keymap("n", "<leader>w", "<cmd>w!<cr>", opts)
 keymap("n", "<leader>q", "<cmd>q!<cr>", opts)
 keymap("n", "<leader>p", "\"_dP", opts)
-keymap("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", opts)
-keymap("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", opts)
+-- keymap("v", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", opts)
 keymap("n", "<leader>.", "<cmd>luafile %<CR>", opts)

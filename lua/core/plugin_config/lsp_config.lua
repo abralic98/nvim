@@ -13,6 +13,11 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig").lua_ls.setup {
@@ -56,4 +61,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
